@@ -15,10 +15,10 @@ def get_version(package_name, version_file='_version.py'):
 setup(
     name=name,
     version=get_version(name),
-    packages=find_packages,
+    packages=find_packages(),
     url='https://github.com/mrstephenneal/differentiate',
     license='MIT License',
     author='Stephen Neal',
     author_email='stephen@stephenneal.net',
-    description='Lightweight data differentiator'
+    description='Lightweight data differentiator.',
 )
