@@ -39,7 +39,12 @@ def differentiate(x, y):
     shortest = secnd_set if len(first_set) > len(secnd_set) else first_set
 
     # Generate set of non-shared values and return list of values in original type
-    return [input_type(i) for i in {i for i in longest if i not in shortest}]
+    uniques = {i for i in longest if i not in shortest}
+    # Add unique elements from shorter list
+    for i in shortest:
+        if i not in longest:
+            uniques.add(i)
+    return [input_type(i) for i in uniques]
 
 
 def main():
