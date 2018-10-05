@@ -45,7 +45,8 @@ def differentiate(x, y):
 def main():
     # Declare argparse argument descriptions
     usage = 'Compare two files text files and retrieve unique values'
-    description = 'TODO.'
+    description = 'Compare two data sets or more (text files or lists/sets) and return the unique elements that are ' \
+                  'found in only one data set.'
     helpers = {
         'files': "Input two text file paths",
     }
