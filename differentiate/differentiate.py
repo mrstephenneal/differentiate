@@ -58,7 +58,7 @@ def main():
 
     # construct the argument parse and parse the arguments
     ap = ArgumentParser(usage=usage, description=description)
-    ap.add_argument('-f', '--files', help=helpers['files'], nargs='+', required=True)
+    ap.add_argument('files', help=helpers['files'], nargs='+')
     args = vars(ap.parse_args())
 
     data = []
