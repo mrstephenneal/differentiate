@@ -58,21 +58,20 @@ def main():
 
     # construct the argument parse and parse the arguments
     ap = ArgumentParser(usage=usage, description=description)
-    ap.add_argument(help=helpers['files'], action='append', default=[], dest='files')
+    ap.add_argument('-f', '--files', help=helpers['files'], nargs='+', required=True)
     args = vars(ap.parse_args())
-
-    # Split text files
-    txt_files = args['files'][0].split(' ')  # hackish
 
     data = []
     # Read each text file
-    for tf in txt_files:
+    for tf in args['files']:
         with open(tf, 'r') as f:
             # Remove whitespace and \n
             data.append([l.strip() for l in f.readlines()])
 
     # Run differentiate
-    print(differentiate(data[0], data[1]))
+    print('\nUnique Items ({}):\n-------------------'.format(len(data)))
+    for i in differentiate(data[0], data[1]):
+        print(i)
 
 
 if __name__ == '__main__':
