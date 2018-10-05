@@ -66,15 +66,14 @@ pip install differentiate
 pip install --upgrade --no-cache-dir differentiate
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ### Project Structure
 
 ```
 differentiate
-	├── __init__.py
-	├── _version.py
-	└── differentiate.py
+├── __init__.py
+├── _version.py
+└── differentiate.py
 
 ```
 
