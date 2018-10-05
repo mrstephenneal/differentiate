@@ -41,3 +41,33 @@ def differentiate(x, y):
     # Generate set of non-shared values and return list of values in original type
     return [input_type(i) for i in {i for i in longest if i not in shortest}]
 
+
+def main():
+    # Declare argparse argument descriptions
+    usage = 'Compare two files text files and retrieve unique values'
+    description = 'TODO.'
+    helpers = {
+        'files': "Input two text file paths",
+    }
+
+    # construct the argument parse and parse the arguments
+    ap = ArgumentParser(usage=usage, description=description)
+    ap.add_argument(help=helpers['files'], action='append', default=[], dest='files')
+    args = vars(ap.parse_args())
+
+    # Split text files
+    txt_files = args['files'][0].split(' ')  # hackish
+
+    data = []
+    # Read each text file
+    for tf in txt_files:
+        with open(tf, 'r') as f:
+            # Remove whitespace and \n
+            data.append([l.strip() for l in f.readlines()])
+
+    # Run differentiate
+    print(differentiate(data[0], data[1]))
+
+
+if __name__ == '__main__':
+    main()
