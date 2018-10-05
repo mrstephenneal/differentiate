@@ -17,6 +17,11 @@ setup(
     version=get_version(name),
     packages=find_packages(),
     url='https://github.com/mrstephenneal/differentiate',
+    entry_points={
+        'console_scripts': [
+            'differ = differentiate.differentiate:main'
+        ]
+    },
     license='MIT License',
     author='Stephen Neal',
     author_email='stephen@stephenneal.net',
