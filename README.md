@@ -87,7 +87,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Stephen Neal** - *Initial work* - [PurpleBooth](https://github.com/mrstephenneal)
+* **Stephen Neal** - *Initial work* - [synfo](https://github.com/mrstephenneal)
 
 ## License
 
