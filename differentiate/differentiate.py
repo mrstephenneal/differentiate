@@ -1,3 +1,6 @@
+from argparse import ArgumentParser
+
+
 def differentiate(x, y):
     """
     Retrieve a unique of list of elements that do not exist in both x and y.
@@ -20,13 +23,13 @@ def differentiate(x, y):
         input_type = type(y[0])
 
     # Dealing with a 2D dataset (list of lists)
-    try:
+    if input_type not in (str, int, float):
         # Immutable and Unique - Convert list of tuples into set of tuples
         first_set = set(map(tuple, x))
         secnd_set = set(map(tuple, y))
 
     # Dealing with a 1D dataset (list of items)
-    except TypeError:
+    else:
         # Unique values only
         first_set = set(x)
         secnd_set = set(y)
@@ -37,3 +40,4 @@ def differentiate(x, y):
 
     # Generate set of non-shared values and return list of values in original type
     return [input_type(i) for i in {i for i in longest if i not in shortest}]
+
