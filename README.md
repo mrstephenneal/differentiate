@@ -44,6 +44,9 @@ print(uniques)  # [[15, 16, 17, 18, 19], [0, 1, 2, 3, 4]]
 ```
 
 ### Command line example
+```bash
+>>> differ require1.txt require2.txt
+```
 
 ## Getting Started
 
@@ -63,22 +66,6 @@ pip install differentiate
 pip install --upgrade --no-cache-dir differentiate
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
 End with an example of getting some data out of the system or using it for a little demo
 
 ### Project Structure
@@ -90,10 +77,6 @@ differentiate
 	└── differentiate.py
 
 ```
-
-## Built With
-
-* Python builtins
 
 ## Contributing
 
