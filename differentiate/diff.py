@@ -1,13 +1,15 @@
 from argparse import ArgumentParser
 
 
-def diff(x, y):
+def diff(x, y, x_only=False, y_only=False):
     """
     Retrieve a unique of list of elements that do not exist in both x and y.
     Capable of parsing one-dimensional (flat) and two-dimensional (lists of lists) lists.
 
     :param x: list #1
     :param y: list #2
+    :param x_only: Return only unique values from x
+    :param y_only: Return only unique values from y
     :return: list of unique values
     """
     # Validate both lists, confirm either are empty
@@ -50,7 +52,14 @@ def diff(x, y):
     for i in shortest:
         if i not in longest:
             uniques.add(i)
-    return [input_type(i) for i in uniques]
+
+    # Return unique values from x, y or both
+    if x_only:
+        return [input_type(i) for i in uniques if i in x]
+    elif y_only:
+        return [input_type(i) for i in uniques if i in y]
+    else:
+        return [input_type(i) for i in uniques]
 
 
 def differentiate(x, y):
