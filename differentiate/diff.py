@@ -74,8 +74,9 @@ def main():
             data.append([l.strip() for l in f.readlines()])
 
     # Run differentiate
-    print('\nUnique Items ({}):\n-------------------'.format(len(data)))
-    for i in diff(data[0], data[1]):
+    d = diff(data[0], data[1])
+    print('\nUnique Items ({}):\n-------------------'.format(len(d)))
+    for i in d:
         print(i)
 
 
