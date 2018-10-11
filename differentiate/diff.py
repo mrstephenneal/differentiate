@@ -16,6 +16,12 @@ def diff(x, y):
     elif len(y) == 0 and len(x) > 0:
         return x  # All x values are unique if y is empty
 
+    # Convert dictionaries to lists of tuples
+    if isinstance(x, dict):
+        x = list(x.items())
+    if isinstance(y, dict):
+        y = list(y.items())
+
     # Get the input type to convert back to before return
     try:
         input_type = type(x[0])
