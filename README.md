@@ -17,19 +17,19 @@ Compare two data sets or more (text files or lists/sets) and return the unique e
 ### Import examples
 ```python
 # Retreive  unique values from two flat lists.
-from differentiate import differentiate
+from differentiate import diff
 
 
 x = [0, 1, 2, 3, 4]
 y = [3, 4, 5, 6, 7]
 
-uniques = differentiate(x, y)
+uniques = diff(x, y)
 print(uniques)  # [0, 1, 2, 5, 6, 7]
 ```
 
 ```python
 # Retrieve unique values from two nested lists.
-from differentiate import differentiate
+from differentiate import diff
 
 
 x = [[0, 1, 2, 3, 4],
@@ -39,7 +39,7 @@ y = [[5, 6, 7, 8, 9],
      [10, 11, 12, 13, 14],
      [15, 16, 17, 18, 19]]
 
-uniques = differentiate(x, y)
+uniques = diff(x, y)
 print(uniques)  # [[15, 16, 17, 18, 19], [0, 1, 2, 3, 4]]
 ```
 

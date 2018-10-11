@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
 
-def differentiate(x, y):
+def diff(x, y):
     """
     Retrieve a unique of list of elements that do not exist in both x and y.
     Capable of parsing one-dimensional (flat) and two-dimensional (lists of lists) lists.
@@ -47,6 +47,11 @@ def differentiate(x, y):
     return [input_type(i) for i in uniques]
 
 
+def differentiate(x, y):
+    """Wrapper function for legacy imports of differentiate."""
+    return diff(x, y)
+
+
 def main():
     # Declare argparse argument descriptions
     usage = 'Compare two files text files and retrieve unique values'
@@ -70,7 +75,7 @@ def main():
 
     # Run differentiate
     print('\nUnique Items ({}):\n-------------------'.format(len(data)))
-    for i in differentiate(data[0], data[1]):
+    for i in diff(data[0], data[1]):
         print(i)
 
 

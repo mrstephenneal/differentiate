@@ -1,4 +1,4 @@
-from differentiate.differentiate import differentiate
+from differentiate.diff import diff
 
 
-__all__ = ['differentiate']
+__all__ = ['diff', 'diff.py']
