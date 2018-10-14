@@ -19,7 +19,7 @@ setup(
     url='https://github.com/mrstephenneal/differentiate',
     entry_points={
         'console_scripts': [
-            'differ = differentiate.differentiate:main'
+            'differ = differentiate.diff:main'
         ]
     },
     license='MIT License',
