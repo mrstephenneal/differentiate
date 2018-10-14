@@ -1,6 +1,3 @@
-from argparse import ArgumentParser
-
-
 def diff(x, y, x_only=False, y_only=False):
     """
     Retrieve a unique of list of elements that do not exist in both x and y.
@@ -68,6 +65,8 @@ def differentiate(x, y):
 
 
 def main():
+    from argparse import ArgumentParser
+
     # Declare argparse argument descriptions
     usage = 'Compare two files text files and retrieve unique values'
     description = 'Compare two data sets or more (text files or lists/sets) and return the unique elements that are ' \
