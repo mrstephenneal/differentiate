@@ -9,11 +9,13 @@ def diff(x, y, x_only=False, y_only=False):
     :param y_only: Return only unique values from y
     :return: list of unique values
     """
-    # Validate both lists, confirm either are empty
+    # Validate both lists, confirm neither are empty
     if len(x) == 0 and len(y) > 0:
         return y  # All y values are unique if x is empty
     elif len(y) == 0 and len(x) > 0:
         return x  # All x values are unique if y is empty
+    elif len(y) == 0 and len(x) == 0:
+        return []
 
     # Convert dictionaries to lists of tuples
     if isinstance(x, dict):
