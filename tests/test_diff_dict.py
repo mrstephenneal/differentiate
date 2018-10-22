@@ -35,6 +35,8 @@ def dictionaries_xy_only():
 
 
 def main():
+    dictionaries()
+    print('\n\n')
     dictionaries_xy_only()
 
 

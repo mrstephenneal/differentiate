@@ -47,6 +47,7 @@ def diff(x, y, x_only=False, y_only=False):
 
     # Generate set of non-shared values and return list of values in original type
     uniques = {i for i in longest if i not in shortest}
+
     # Add unique elements from shorter list
     for i in shortest:
         if i not in longest:
@@ -54,9 +55,9 @@ def diff(x, y, x_only=False, y_only=False):
 
     # Return unique values from x, y or both
     if x_only:
-        return [input_type(i) for i in uniques if i in x]
+        return [input_type(i) for i in uniques if input_type(i) in x]
     elif y_only:
-        return [input_type(i) for i in uniques if i in y]
+        return [input_type(i) for i in uniques if input_type(i) in y]
     else:
         return [input_type(i) for i in uniques]
 
