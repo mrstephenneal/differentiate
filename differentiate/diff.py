@@ -20,17 +20,21 @@ class Differentiate:
 
     @property
     def duplicates(self):
+        """Retrieve non-unique values found in both X and Y."""
         return self._get_duplicates()
 
     @property
     def uniques_x(self):
-        return self._get_uniques_x()
+        """Retrieve unique values found in sequence X."""
+        return self._get_uniques_single(self._x)
 
     @property
     def uniques_y(self):
-        return self._get_uniques_y()
+        """Retrieve unique values found in sequence Y."""
+        return self._get_uniques_single(self._y)
 
     def _transform(self, x, y):
+        """Transform a data sequence into a set of unique, immutable values for comparison."""
         _x = x
         _y = y
 
@@ -75,6 +79,7 @@ class Differentiate:
         return longest, shortest
 
     def _get_uniques(self, x, y):
+        """Get unique values existing in only X or Y."""
         longest, shortest = self._transform(x, y)
 
         # Generate set of non-shared values and return list of values in original type
@@ -86,19 +91,15 @@ class Differentiate:
                 uniques.add(i)
         return uniques
 
-    def _get_uniques_x(self):
+    def _get_uniques_single(self, data_set):
+        """Get unique values existing in only one of the data sets."""
         if self._input_type is dict:
-            return [i for i in self._input_type(self.uniques) if i in self._x]
+            return [i for i in self._input_type(self.uniques) if i in data_set]
         else:
-            return [self._input_type(i) for i in self.uniques if self._input_type(i) in self._x]
-
-    def _get_uniques_y(self):
-        if self._input_type is dict:
-            return [i for i in self._input_type(self.uniques) if i in self._y]
-        else:
-            return [self._input_type(i) for i in self.uniques if self._input_type(i) in self._y]
+            return [self._input_type(i) for i in self.uniques if self._input_type(i) in data_set]
 
     def _get_duplicates(self):
+        """Get repeated values found in both X and Y."""
         if self._input_type is dict:
             longest, shortest = self._transform(self._x, self._y)
             longest, shortest = self._input_type(longest), self._input_type(shortest)
