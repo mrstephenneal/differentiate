@@ -23,6 +23,10 @@ class TestDiffLists(unittest.TestCase):
         diffs = diff(self.new, self.existing, y_only=True)
         self.assertEqual(len(diffs), 7)
 
+    def test_diff_list_duplicates(self):
+        diffs = diff(self.new, self.existing, duplicates=True)
+        self.assertEqual(len(diffs), 2)
+
 
 if __name__ == '__main__':
     unittest.main()
