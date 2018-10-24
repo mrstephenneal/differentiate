@@ -1,77 +1,65 @@
-class Differentiate:
-    def __init__(self, x, y):
-        """
-        Retrieve a unique of list of elements that do not exist in both x and y.
-        Capable of parsing one-dimensional (flat) and two-dimensional (lists of lists) lists.
-
-        Steps:
-            1. Retrieve input existing data types
-            2. Transform x and y inputs into sequences of unique, immutable values
-            3. Create set if values found in both x and y
-
-        :param x: list #1
-        :param y: list #2
-        :return: list of unique values
-        """
-        self._input_type = None
-        self._x = x
-        self._y = y
-        self._x_set = self._transform(x)
-        self._y_set = self._transform(y)
-        self._uniques = self._get_uniques()
-
-    @property
-    def uniques(self):
-        return self._uniques
-
-    @property
-    def uniques_x(self):
-        return [self._input_type(i) for i in self._uniques if self._input_type(i) in self._x]
-
-    @property
-    def uniques_y(self):
-        return [self._input_type(i) for i in self._uniques if self._input_type(i) in self._y]
-
-    def _get_uniques(self):
-        # Generate set of non-shared values and return list of values in original type
-        uniques = {i for i in self._y_set if i not in self._x_set}
-
-        # Add unique elements from shorter list
-        for i in self._x_set:
-            if i not in self._y_set:
-                uniques.add(i)
-        return uniques
-
-    def _transform(self, data):
-        # Convert dictionaries to lists of tuples
-        if isinstance(data, dict):
-            data = list(data.items())
-
-        # Get the input type to convert back to before return
-        input_type = type(data[0])
-        if self._input_type != input_type:
-            self._input_type = input_type
-
-        # Immutable and Unique - Convert list of tuples into set of tuples
-        if input_type not in (str, int, float):
-            return set(map(tuple, data))
-
-        # Unique values only
-        else:
-            return set(data)
-
-
 def diff(x, y, x_only=False, y_only=False):
-    """Wrapper function for Differentiate class"""
-    d = Differentiate(x, y)
+    """
+    Retrieve a unique of list of elements that do not exist in both x and y.
+    Capable of parsing one-dimensional (flat) and two-dimensional (lists of lists) lists.
+
+    :param x: list #1
+    :param y: list #2
+    :param x_only: Return only unique values from x
+    :param y_only: Return only unique values from y
+    :return: list of unique values
+    """
+    # Validate both lists, confirm neither are empty
+    if len(x) == 0 and len(y) > 0:
+        return y  # All y values are unique if x is empty
+    elif len(y) == 0 and len(x) > 0:
+        return x  # All x values are unique if y is empty
+    elif len(y) == 0 and len(x) == 0:
+        return []
+
+    # Convert dictionaries to lists of tuples
+    if isinstance(x, dict):
+        x = list(x.items())
+    if isinstance(y, dict):
+        y = list(y.items())
+
+    # Get the input type to convert back to before return
+    try:
+        input_type = type(x[0])
+    except IndexError:
+        input_type = type(y[0])
+
+    # Dealing with a 2D dataset (list of lists)
+    if input_type not in (str, int, float):
+        # Immutable and Unique - Convert list of tuples into set of tuples
+        first_set = set(map(tuple, x))
+        secnd_set = set(map(tuple, y))
+
+    # Dealing with a 1D dataset (list of items)
+    else:
+        # Unique values only
+        first_set = set(x)
+        secnd_set = set(y)
+
+    # Determine which list is longest
+    longest = first_set if len(first_set) > len(secnd_set) else secnd_set
+    shortest = secnd_set if len(first_set) > len(secnd_set) else first_set
+
+    # Generate set of non-shared values and return list of values in original type
+    uniques = {i for i in longest if i not in shortest}
+
+    # Add unique elements from shorter list
+    for i in shortest:
+        if i not in longest:
+            uniques.add(i)
 
     # Return unique values from x, y or both
     if x_only:
-        return d.uniques_x
+        return [input_type(i) for i in uniques if input_type(i) in x]
     elif y_only:
-        return d.uniques_y
+        return [input_type(i) for i in uniques if input_type(i) in y]
     else:
-        return d.uniques
+        return [input_type(i) for i in uniques]
 
 
 def differentiate(x, y):
