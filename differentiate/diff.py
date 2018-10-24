@@ -3,6 +3,12 @@ def diff(x, y, x_only=False, y_only=False):
     Retrieve a unique of list of elements that do not exist in both x and y.
     Capable of parsing one-dimensional (flat) and two-dimensional (lists of lists) lists.
 
+    Steps:
+        1. Confirm x and y inputs have values
+        2. Retrieve input existing data types
+        3. Transform x and y inputs into sequences of unique, immutable values
+        4. Create set if values found in both x and y
+
     :param x: list #1
     :param y: list #2
     :param x_only: Return only unique values from x
@@ -32,18 +38,18 @@ def diff(x, y, x_only=False, y_only=False):
     # Dealing with a 2D dataset (list of lists)
     if input_type not in (str, int, float):
         # Immutable and Unique - Convert list of tuples into set of tuples
-        first_set = set(map(tuple, x))
-        secnd_set = set(map(tuple, y))
+        x_set = set(map(tuple, x))
+        y_set = set(map(tuple, y))
 
     # Dealing with a 1D dataset (list of items)
     else:
         # Unique values only
-        first_set = set(x)
-        secnd_set = set(y)
+        x_set = set(x)
+        y_set = set(y)
 
     # Determine which list is longest
-    longest = first_set if len(first_set) > len(secnd_set) else secnd_set
-    shortest = secnd_set if len(first_set) > len(secnd_set) else first_set
+    longest = x_set if len(x_set) > len(y_set) else y_set
+    shortest = y_set if len(x_set) > len(y_set) else x_set
 
     # Generate set of non-shared values and return list of values in original type
     uniques = {i for i in longest if i not in shortest}
