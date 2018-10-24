@@ -4,7 +4,7 @@ from differentiate import diff
 
 
 class TestDiffInts(unittest.TestCase):
-    def test_diff_list_nested(self):
+    def test_diff_int_nested(self):
         x = [[0, 1, 2, 3, 4],
              [5, 6, 7, 8, 9],
              [10, 11, 12, 13, 14]]
@@ -15,12 +15,19 @@ class TestDiffInts(unittest.TestCase):
         uniques = diff(x, y)
         self.assertEqual(len(uniques), 2)
 
-    def test_diff_list_flat(self):
+    def test_diff_int_flat(self):
         x = [0, 1, 2, 3, 4]
         y = [3, 4, 5, 6, 7]
 
         uniques = diff(x, y)
         self.assertEqual(len(uniques), 6)
+
+    def test_diff_int_duplicates(self):
+        x = [0, 1, 2, 3, 4]
+        y = [3, 4, 5, 6, 7]
+
+        uniques = diff(x, y, duplicates=True)
+        self.assertEqual(len(uniques), 2)
 
 
 if __name__ == '__main__':
