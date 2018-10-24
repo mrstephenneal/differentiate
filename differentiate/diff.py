@@ -14,8 +14,10 @@ class Differentiate:
         :return: list of unique values
         """
         self._input_type = None
-        self._x = self._transform(x)
-        self._y = self._transform(y)
+        self._x = x
+        self._y = y
+        self._x_set = self._transform(x)
+        self._y_set = self._transform(y)
         self._uniques = self._get_uniques()
 
     @property
@@ -32,11 +34,11 @@ class Differentiate:
 
     def _get_uniques(self):
         # Generate set of non-shared values and return list of values in original type
-        uniques = {i for i in self._y if i not in self._x}
+        uniques = {i for i in self._y_set if i not in self._x_set}
 
         # Add unique elements from shorter list
-        for i in self._x:
-            if i not in self._y:
+        for i in self._x_set:
+            if i not in self._y_set:
                 uniques.add(i)
         return uniques
 
