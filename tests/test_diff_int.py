@@ -1,33 +1,27 @@
 # Retrieve unique values from two nested lists.
+import unittest
 from differentiate import diff
 
 
-def nested():
-    x = [[0, 1, 2, 3, 4],
-         [5, 6, 7, 8, 9],
-         [10, 11, 12, 13, 14]]
-    y = [[5, 6, 7, 8, 9],
-         [10, 11, 12, 13, 14],
-         [15, 16, 17, 18, 19]]
+class TestDiffInts(unittest.TestCase):
+    def test_diff_list_nested(self):
+        x = [[0, 1, 2, 3, 4],
+             [5, 6, 7, 8, 9],
+             [10, 11, 12, 13, 14]]
+        y = [[5, 6, 7, 8, 9],
+             [10, 11, 12, 13, 14],
+             [15, 16, 17, 18, 19]]
 
-    uniques = diff(x, y)
-    print(uniques)  # [[15, 16, 17, 18, 19], [0, 1, 2, 3, 4]]
-    return uniques
+        uniques = diff(x, y)
+        self.assertEqual(len(uniques), 2)
 
+    def test_diff_list_flat(self):
+        x = [0, 1, 2, 3, 4]
+        y = [3, 4, 5, 6, 7]
 
-def flat():
-    x = [0, 1, 2, 3, 4]
-    y = [3, 4, 5, 6, 7]
-
-    uniques = diff(x, y)
-    print(uniques)  # [5, 6, 7]
-    return uniques
-
-
-def main():
-    nested()
-    flat()
+        uniques = diff(x, y)
+        self.assertEqual(len(uniques), 6)
 
 
 if __name__ == '__main__':
-    main()
+    unittest.main()

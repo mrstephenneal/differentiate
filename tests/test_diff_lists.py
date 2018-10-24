@@ -11,10 +11,17 @@ class TestDiffLists(unittest.TestCase):
         cls.new = [['d009', 'Customer Service'], ['d002', 'Finance'], ['d010', 'Information Technology'],
                    ['d011', 'Software Development']]
 
-    def test_diff(self):
-        diffs = diff(self.new, self.existing, x_only=True)
+    def test_diff_list(self):
+        diffs = diff(self.new, self.existing)
+        self.assertEqual(len(diffs), 9)
 
+    def test_diff_list_x_only(self):
+        diffs = diff(self.new, self.existing, x_only=True)
         self.assertEqual(len(diffs), 2)
+
+    def test_diff_list_y_only(self):
+        diffs = diff(self.new, self.existing, y_only=True)
+        self.assertEqual(len(diffs), 7)
 
 
 if __name__ == '__main__':
