@@ -1,5 +1,11 @@
 # Differentiate
 
+[![Build Status](https://travis-ci.com/sfneal/differentiate.svg?branch=master)](https://travis-ci.com/sfneal/differentiate)
+[![PyPi version](https://img.shields.io/pypi/v/differentiate)](https://pypi.org/project/differentiate)
+[![PyPi Python support](https://img.shields.io/pypi/pyversions/differentiate)](https://pypi.org/project/differentiate)
+[![PyPi downloads per month](https://img.shields.io/pypi/dm/differentiate)](https://pypi.org/project/differentiate)
+[![PyPi license](https://img.shields.io/pypi/l/differentiate)](https://pypi.org/project/differentiate)
+
 Compare multiple data sets and retrieve the unique, non-repeated elements.
 
 Package features:
