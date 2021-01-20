@@ -5,6 +5,8 @@
 [![PyPi Python support](https://img.shields.io/pypi/pyversions/differentiate)](https://pypi.org/project/differentiate)
 [![PyPi downloads per month](https://img.shields.io/pypi/dm/differentiate)](https://pypi.org/project/differentiate)
 [![PyPi license](https://img.shields.io/pypi/l/differentiate)](https://pypi.org/project/differentiate)
+[![StyleCI](https://github.styleci.io/repos/151465917/shield?branch=master)](https://github.styleci.io/repos/151465917?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sfneal/differentiate/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sfneal/differentiate/?branch=master)
 
 Compare multiple data sets and retrieve the unique, non-repeated elements.
 
