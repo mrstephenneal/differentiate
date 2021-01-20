@@ -16,7 +16,7 @@ setup(
     name=name,
     version=get_version(name),
     packages=find_packages(),
-    url='https://github.com/mrstephenneal/differentiate',
+    url='https://github.com/sfneal/differentiate',
     entry_points={
         'console_scripts': [
             'differ = differentiate.diff:main'
