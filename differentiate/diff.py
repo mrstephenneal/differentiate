@@ -40,9 +40,9 @@ class Differentiate:
 
         # Validate both lists, confirm neither are empty
         if len(x) == 0 and len(y) > 0:
-            return y  # All y values are unique if x is empty
+            return y    # All y values are unique if x is empty
         elif len(y) == 0 and len(x) > 0:
-            return x  # All x values are unique if y is empty
+            return x    # All x values are unique if y is empty
         elif len(y) == 0 and len(x) == 0:
             return []
 

@@ -1,7 +1,6 @@
 import os
 from setuptools import setup, find_packages
 
-
 name = 'differentiate'
 
 
@@ -17,11 +16,7 @@ setup(
     version=get_version(name),
     packages=find_packages(),
     url='https://github.com/sfneal/differentiate',
-    entry_points={
-        'console_scripts': [
-            'differ = differentiate.diff:main'
-        ]
-    },
+    entry_points={'console_scripts': ['differ = differentiate.diff:main']},
     license='MIT License',
     author='Stephen Neal',
     author_email='stephen@stephenneal.net',
