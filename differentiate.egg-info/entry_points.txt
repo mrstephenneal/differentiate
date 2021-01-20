@@ -1,3 +1,0 @@
-[console_scripts]
-differ = differentiate.diff:main
-
